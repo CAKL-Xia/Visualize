@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+ 
+<style>
+  #canvas {
+    background: #f0f0f0;
+    background: linear-gradient(-45deg, transparent 49%, rgba(0,0,0,.1) 49%, rgba(0,0,0,.1) 51%, transparent 51%) center no-repeat, repeating-linear-gradient(white, white 20px, transparent 20px, transparent 40px) no-repeat, linear-gradient(transparent, rgba(0,0,0,.06) 25%, rgba(0,0,0,.06) 75%, transparent);
+    background-size: 100% 50%, 100% 50%, auto;
+    background-position: 25%, 0, 0;
+    -webkit-user-select: none;
+    user-select: none;
+ }
+  
+#context {
+    position: relative;
+    margin-top: 2rem; 
+    width: 800px;
+    height: 600px;
+} 
+
+#curve-display {
+    grid-area: curve;
+    justify-self: center;
+    margin-left:  20px;
+}
+
+
+ 
+
+#context::before, #context::after {
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    width: 100%;
+    padding: 0.3em 0.5em;
+    box-sizing: border-box;
+    color: rgba(0,0,0,.6);
+    text-transform: uppercase;
+    font-size: 75%;
+    line-height: 1;
+}
+
+
+ #context::before {
+    content: 'Progression';
+    border-bottom: 1px solid;
+    transform: rotate(-90deg);
+    transform-origin: bottom left;
+} 
+
+
+#context::after {
+    content: 'Time';
+    border-top: 1px solid;
+    margin-bottom: -1.5em;
+}  
+ 
+ 
+.control-point {
+    position: absolute;
+    z-index: 1;
+    height: 20px;
+    width: 20px;
+    border: 1px solid rgba(0,0,0,.3);
+    margin: -10px 0 0 -10px;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+  
+
+#P0 {
+    left: 0;
+    top: 75%;
+}
+
+#P0, #P3 {
+    background: white;
+    pointer-events: none;
+}  
+
+
+#P3 {
+    left: 100%;
+    top: 25%;
+}
+  
+  
+   
+</style>
+
+</head>  
+ 
+<body>  
+    <div id='context'>    
+        <span class="control-point" id="P0"></span>  
+        <span class="control-point" id="P3"></span>  
+        <canvas id="canvas" height="600" width="800" />
+    </div>
+
+    <script src="./index.js"></script>
+    <script>    
+        const control = [{ type: 'linkStart' , left: 40, top: 300 }, {  type: 'linkEnd',left: 300, top: 20 }]; 
+
+ 
+
+        const canvas = new GiveLineAbilities('canvas' , 'context'); 
+        canvas.createControl(control)   
+
+ 
+        // canvas.onChange= (x,y) => { 
+        //        console.log('====================================');
+        //        console.log( x,y);
+        //        console.log('====================================');
+        //  }  
+
+
+
+    </script>
+</body>
+</html>
