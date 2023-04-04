@@ -32,7 +32,6 @@ class Stage {
       let downPointOffsetY = 0;           
       let downPageX = 0;
       let downPageY = 0;
-         
       let targetEle = null;
  
 
