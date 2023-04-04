@@ -5,7 +5,7 @@ class Circle extends Shape {
       } 
  
       containPoint(px, py) {
-        const { x, y, radius } = this;
+        const { x, y, radius } = this;    
         return Math.sqrt((px - x) * (px - x) + (py - y) * (py - y)) <= radius;
       }  
 

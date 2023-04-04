@@ -1,9 +1,5 @@
 class Node { 
-    constructor(options) {  
-
-       console.log('====================================');
-       console.log('options', options );
-       console.log('====================================');
+    constructor(options) { 
       this.setAttrs(options);
     } 
      

@@ -70,8 +70,6 @@ class Stage {
       document.addEventListener('mouseup', (upEvent) => {
         document.removeEventListener('mousemove', moveFn);
       });  
-
-    
       // 更新
       this.render();
     }
@@ -87,11 +85,9 @@ class Stage {
         this._elements.forEach(ele => ele.render());
     }  
 
-    _pointInWitchElement(x, y) {  
-
-       console.log( 'this._elements', this._elements);
+    _pointInWitchElement(x, y) {   
         let target = this._elements.toReversed().find(ele => {
-          if (typeof ele.containPoint !== 'function') return false;
+          if (typeof ele.containPoint !== 'function') return false;  
           return ele.containPoint(x, y);
         });  
 

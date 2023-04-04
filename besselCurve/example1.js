@@ -11,7 +11,7 @@ const example1 = () => {
     stage.appendElement(line1);
     stage.appendElement(line2);
    
- 
+
    // 辅助节点 
     const ctl1Circle = new Circle({x: 150, y: 100, radius: 8, background: 'red', borderColor: 'black', drag: true});
     const ctl2Circle = new Circle({x: 450, y: 300, radius: 8, background: 'blue', borderColor: 'black', drag: true}); 
