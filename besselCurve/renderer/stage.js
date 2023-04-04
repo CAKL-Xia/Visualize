@@ -40,26 +40,18 @@ class Stage {
 
         let canvasX = moveEvent.pageX - this._container.offsetLeft - downPointOffsetX;
         let canvasY = moveEvent.pageY - this._container.offsetTop - downPointOffsetY;
-   
-
         const { drag } = targetEle && targetEle !== null ? targetEle : { drag: false}
-       
-            
+      
         if (drag) {
           if (canvasX < 0) canvasX = 0;
           if (canvasX > this._canvas.width) canvasX = this._canvas.width;
           if (canvasY < 0) canvasY = 0;
           if (canvasY > this._canvas.height) canvasY = this._canvas.height;
-      
-  
-
-          console.log('====================================');
-          console.log( 'targetEle', targetEle, canvasX, canvasY);
-          console.log('====================================');
-
-
           targetEle.onDrag(canvasX, canvasY)
-        }        
+         }       
+         
+        
+        this.render();
       }; 
 
       this._canvas.addEventListener('mousedown', (e) => { 
@@ -77,10 +69,11 @@ class Stage {
 
       document.addEventListener('mouseup', (upEvent) => {
         document.removeEventListener('mousemove', moveFn);
-      });
-         
-      this.render();
+      });  
 
+    
+      // 更新
+      this.render();
     }
 
     appendElement = (ele) => {   
@@ -94,7 +87,9 @@ class Stage {
         this._elements.forEach(ele => ele.render());
     }  
 
-    _pointInWitchElement(x, y) {
+    _pointInWitchElement(x, y) {  
+
+       console.log( 'this._elements', this._elements);
         let target = this._elements.toReversed().find(ele => {
           if (typeof ele.containPoint !== 'function') return false;
           return ele.containPoint(x, y);

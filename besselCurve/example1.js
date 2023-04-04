@@ -18,25 +18,24 @@ const example1 = () => {
     stage.appendElement(ctl1Circle);
     stage.appendElement(ctl2Circle);
 
-
     // 开始节点，尾部节点
     const startCircle = new Circle({x: 10, y: 390, radius: 8, background: 'white', borderColor: 'black', drag: true});
     const endCircle = new Circle({x: 590, y: 10, radius: 8, background: 'white', borderColor: 'black', drag: true});   
     stage.appendElement(startCircle);
     stage.appendElement(endCircle);   
 
+    startCircle.onDrag = (x, y) => {   
+      startCircle.setAttrs({x, y}); 
+      line1.setAttrs({x1: x, y1: y});
+      endStartLine.setAttrs({x1: x, y1: y});
+    }   
 
-    // startCircle.onDrag((x,y) => {             
-   
-      
-    // })   
-
-
-   console.log('====================================');
-   console.log( 'startCircle', startCircle);
-   console.log('====================================');
-    
-
+     
+    endCircle.onDrag = (x, y ) => { 
+      endCircle.setAttrs({x, y}); 
+      line2.setAttrs({x1: x, y1: y});
+      endStartLine.setAttrs({x2: x, y2: y})
+    }
 
 
   stage.render();
